@@ -1,16 +1,19 @@
 <% title @snippet.name %>
 
 <div class="showcase box">
-  <%= @snippet.full_source %>
+  <div class="ribbon"><%= @snippet.name %></div>
+  <div>
+    <%= @snippet.full_source %>
+  </div>
 </div>
 
 <div class="html box">
-  <b>html:</b>
+  <div class="ribbon">html</div>
   <%= text_area_tag nil, @snippet.html, class: "mono" %>
 </div>
 
 <div class="css box">
-  <b>css:</b>
+  <div class="ribbon">css</div>
   <%= text_area_tag nil, @snippet.css, class: "mono" %>
 </div>
 

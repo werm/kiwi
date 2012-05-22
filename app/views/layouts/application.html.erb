@@ -25,6 +25,13 @@
       <% @snippets.each do |snippet| %>
         <%= link_to snippet.name, snippet %>
       <% end %>
+
+      <hr />
+
+      <span>other snippets</span>
+      <% @snippets.each do |snippet| %>
+        <%= link_to snippet.name, snippet %>
+      <% end %>
     </nav>
 
     <div class="clear"></div>

@@ -25,6 +25,14 @@ a {
   }
 }
 
+hr {
+  border: solid #999;
+  border-width: 1px 0 0;
+  clear: both;
+  margin: 12px 10px;
+  height: 0;
+}
+
 @import "typography";
 
 $nav-width: 160px;
@@ -80,6 +88,26 @@ header#header {
     }
     &.html { float: left; }
     &.css { float: right; }
+
+    .ribbon {
+      display: inline-block;
+      position: relative;
+      left: -10px;
+      margin: 0 0 10px 0;
+      padding: 6px 16px;
+      background: rgba(39, 144, 174, 1);
+
+      border-radius: $radius;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      line-height: 1;
+    }
   }
 }
 
@@ -103,7 +131,7 @@ nav#nav {
     padding: 3px 0 3px 10px;
   }
 
-  span { font-weight: bold; }
+  span { display: block; font-weight: bold; }
 
   a {
     display: block;

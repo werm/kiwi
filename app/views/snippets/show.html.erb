@@ -1,0 +1,20 @@
+<% title @snippet.name %>
+
+<div class="showcase box">
+  <%= @snippet.full_source %>
+</div>
+
+<div class="html box">
+  <b>html:</b>
+  <%= text_area_tag nil, @snippet.html, class: "mono" %>
+</div>
+
+<div class="css box">
+  <b>css:</b>
+  <%= text_area_tag nil, @snippet.css, class: "mono" %>
+</div>
+
+<div class="clear"></div>
+
+<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Back', snippets_path %>

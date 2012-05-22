@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><% if content_for? :title %><%= yield :title %> &mdash; <% end %>Kiwi</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript" src="http://use.typekit.com/une4wfx.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+  <header id="header">
+    <%= link_to "kiwi.", root_path %><br />
+    <span class="description">a web snippet love affair.</span>
+  </header>
+
+  <div class="container">
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <nav id="nav">
+      <span>snippets</span>
+      <% @snippets.each do |snippet| %>
+        <%= link_to snippet.name, snippet %>
+      <% end %>
+    </nav>
+
+    <div class="clear"></div>
+  </div>
+</body>
+</html>
+

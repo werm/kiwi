@@ -17,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    true
+    nil
   end
 end

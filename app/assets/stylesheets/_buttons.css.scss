@@ -1,0 +1,107 @@
+@mixin button-colors($base, $reverse: false) {
+  $text-color: darken($base, 58%);
+
+  @if (lightness($base) <= 40) {
+    $text-color: #fff;
+  } @else if (lightness($base) >= 90) {
+    $text-color: darken($base, 58%);
+  } @else if (lightness($base) >= 40) {
+    $text-color: darken($base, 40%);
+  }
+
+  $color1: lighten($base, 4%);
+  $color2: darken($base, 4%);
+
+  @if $reverse {
+    $color1: darken($base, 2%);
+    $color2: lighten($base, 2%);
+  }
+
+  color: $text-color;
+  text-shadow: 1px 1px lighten($base, 7%);
+  box-shadow: inset 0 1px lighten($base, 10%), // 5
+              inset 1px 0 lighten($base, 4%),  // 2
+              inset -1px 0 lighten($base, 4%),
+              inset 0 -1px darken($base, 1%),
+              0 2px darken($base, 20%),
+              0 3px darken($base, 26%),
+              0 4px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid darken($base, 18%);
+  border-bottom: 1px solid darken($base, 26%);
+  border-top: 1px solid darken($base, 9%);
+
+  @include linear-gradient($color1 0%, $color2 100%, $fallback: $base);
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 10px;
+  padding: 8px 15px;
+  line-height: 1;
+
+  cursor: pointer;
+  outline: none;
+
+  font-family: proxima-nova, sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+  text-transform: lowercase;
+
+  border-radius: 3px;
+
+  @include button-colors(#e8e8e8);
+
+  &:hover {
+    @include button-colors(#e8e8e8, $reverse: true);
+  }
+
+  &:active {
+    top: 3px;
+    border: 1px solid #b9b9b9;
+    border-top: 1px solid #959595;
+    border-bottom: 1px solid #cacaca;
+    background: #e8e8e8;
+    box-shadow: inset 0 1px 2px #b9b9b9;
+  }
+}
+
+.button::-moz-focus-inner { border: 0; }
+
+@mixin button-mixin($base) {
+  @include button-colors($base);
+
+  &:hover {
+    @include button-colors($base, $reverse: true);
+  }
+
+  &:active {
+    background: $base;
+  }
+}
+
+.button.steel {
+  @include button-mixin(#a5b8c6);
+}
+.button.yellow {
+  @include button-mixin(#fed166);
+}
+.button.red {
+  @include button-mixin(#f77e94);
+}
+.button.black {
+  @include button-mixin(#595959);
+}
+.button.purple {
+  @include button-mixin(#dfaeda);
+}
+.button.green {
+  @include button-mixin(#b6d76f);
+}
+.button.darkgray {
+  @include button-mixin(#c0c0c0);
+}
+.button.blue {
+  @include button-mixin(#8cd8f6);
+}
+

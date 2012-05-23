@@ -1,23 +1,26 @@
 <% title @snippet.name %>
 
-<div class="showcase box">
+<div class="showcase kiwibox">
   <div class="ribbon"><%= @snippet.name %></div>
   <div>
     <%= @snippet.full_source %>
   </div>
 </div>
 
-<div class="html box">
+<div class="html kiwibox">
   <div class="ribbon">html</div>
   <%= text_area_tag nil, @snippet.html, class: "mono" %>
 </div>
 
-<div class="css box">
+<div class="css kiwibox">
   <div class="ribbon">css</div>
   <%= text_area_tag nil, @snippet.css, class: "mono" %>
 </div>
 
 <div class="clear"></div>
 
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<%= link_to 'Back', snippets_path %>
+<% if can? :manage, Snippet %>
+  <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+  <%= link_to 'Back', snippets_path %>
+<% end %>
+

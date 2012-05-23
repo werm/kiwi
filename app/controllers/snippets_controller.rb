@@ -1,4 +1,7 @@
 class SnippetsController < ApplicationController
+  skip_authorization_check only: [:index, :show]
+  before_filter :authorize, except: [:index, :show]
+
   # GET /snippets
   # GET /snippets.json
   def index
@@ -78,4 +81,11 @@ class SnippetsController < ApplicationController
       format.json { render json: nil, status: :ok }
     end
   end
+
+  private
+
+  def authorize
+    authorize! :manage, Snippet
+  end
 end
+

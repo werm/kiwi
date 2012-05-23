@@ -11,12 +11,26 @@
 </head>
 <body>
   <header id="header">
-    <%= link_to "kiwi.", root_path %><br />
-    <span class="description">a web snippet love affair.</span>
+    <div class="left">
+      <%= link_to "kiwi.", root_path, class: "logo" %><br />
+      <span class="description">a web snippet love affair.</span>
+    </div>
+
+    <% if can? :manage, Snippet %>
+      <div class="actions">
+        <%= link_to "new snippet", new_snippet_path, class: "green button" %>
+      </div>
+    <% end %>
+
+    <div class="clear"></div>
   </header>
 
   <div class="container">
     <div class="content">
+      <% flash.each do |k, v| %>
+        <div class="flash <%= k %>"><%= v %></div>
+      <% end %>
+
       <%= yield %>
     </div>
 
@@ -30,6 +44,9 @@
 
         <% unless cat == @categories.last %><hr /><% end %>
 
+      <% end %>
+      <% if @snippet_count == 0 %>
+        <span>nothing to see here yet. how's about you go create some snippets?</span>
       <% end %>
     </nav>
 

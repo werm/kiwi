@@ -1,4 +1,16 @@
 <div class="index-page">
-  <h3>select a snippet to see what kiwi is all about.<br />&larr;</h3>
+  <% if @snippet_count > 0 %>
+    <h2>select a snippet to see what kiwi is all about.<br />&larr;</h2>
+  <% else %>
+    <h2>yeah, what they said.<br />&larr;</h2>
+    <% if can? :manage, Snippet %>
+      <%= link_to "new snippet", new_snippet_path %>
+    <% else %>
+      <p>
+        hmm, looks like you're not allowed to create new snippets. better
+        luck next time!
+      </p>
+    <% end %>
+  <% end %>
 </div>
 

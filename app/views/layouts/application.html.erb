@@ -10,20 +10,7 @@
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-  <header id="header">
-    <div class="left">
-      <%= link_to "kiwi.", root_path, class: "logo" %><br />
-      <span class="description">a web snippet love affair.</span>
-    </div>
-
-    <% if can? :manage, Snippet %>
-      <div class="actions">
-        <%= link_to "new snippet", new_snippet_path, class: "green button" %>
-      </div>
-    <% end %>
-
-    <div class="clear"></div>
-  </header>
+  <%= render partial: "shared/header" %>
 
   <div class="container">
     <div class="content">
@@ -34,21 +21,7 @@
       <%= yield %>
     </div>
 
-    <nav id="nav">
-      <% @categories.each do |cat| %>
-        <span><%= cat %></span>
-
-        <% Snippet.where(category: cat).each do |snip| %>
-          <%= link_to snip.name, snip %>
-        <% end %>
-
-        <% unless cat == @categories.last %><hr /><% end %>
-
-      <% end %>
-      <% if @snippet_count == 0 %>
-        <span>nothing to see here yet. how's about you go create some snippets?</span>
-      <% end %>
-    </nav>
+    <%= render partial: "shared/nav" %>
 
     <div class="clear"></div>
   </div>

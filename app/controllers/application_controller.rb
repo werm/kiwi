@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_snippets
-    @categories = Snippet.select(:category).uniq
+    @categories = Snippet.select(:category).uniq.order("category")
     @categories.map! { |s| s.category }
     @snippet_count = Snippet.count
   end

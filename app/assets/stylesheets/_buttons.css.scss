@@ -87,7 +87,7 @@
   @include button-mixin(#fed166);
 }
 .button.red {
-  @include button-mixin(#f77e94);
+  @include button-mixin(#f07a90);
 }
 .button.black {
   @include button-mixin(#595959);
@@ -103,5 +103,8 @@
 }
 .button.blue {
   @include button-mixin(#8cd8f6);
+}
+.button.cyan {
+  @include button-mixin(#98e8ea);
 }
 

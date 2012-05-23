@@ -21,16 +21,15 @@
     </div>
 
     <nav id="nav">
-      <span>snippets</span>
-      <% @snippets.each do |snippet| %>
-        <%= link_to snippet.name, snippet %>
-      <% end %>
+      <% @categories.each do |cat| %>
+        <span><%= cat %></span>
 
-      <hr />
+        <% Snippet.where(category: cat).each do |snip| %>
+          <%= link_to snip.name, snip %>
+        <% end %>
 
-      <span>other snippets</span>
-      <% @snippets.each do |snippet| %>
-        <%= link_to snippet.name, snippet %>
+        <% unless cat == @categories.last %><hr /><% end %>
+
       <% end %>
     </nav>
 

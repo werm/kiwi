@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_snippets
-    @snippets = Snippet.all
+    @categories = Snippet.select(:category).uniq
+    @categories.map! { |s| s.category }
   end
 end

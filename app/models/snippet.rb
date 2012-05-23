@@ -1,7 +1,7 @@
 class Snippet < ActiveRecord::Base
-  attr_accessible :css, :html, :name, :slug
+  attr_accessible :css, :html, :name, :slug, :category
 
-  validates_presence_of :name, :slug
+  validates_presence_of :name, :slug, :category
   validates_uniqueness_of :name, :slug
 
   before_validation :generate_slug

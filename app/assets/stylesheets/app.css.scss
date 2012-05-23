@@ -1,3 +1,5 @@
+@import "typography";
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -32,8 +34,6 @@ hr {
   margin: 12px 10px;
   height: 0;
 }
-
-@import "typography";
 
 $nav-width: 160px;
 $radius: 5px;
@@ -107,6 +107,7 @@ header#header {
       font-size: 1.3rem;
       font-weight: bold;
       line-height: 1;
+      @include antialias;
     }
   }
 }
@@ -131,7 +132,11 @@ nav#nav {
     padding: 3px 0 3px 10px;
   }
 
-  span { display: block; font-weight: bold; }
+  span {
+    display: block;
+    font-weight: bold;
+    @include antialias;
+  }
 
   a {
     display: block;

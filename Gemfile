@@ -31,5 +31,4 @@ group :development, :test do
 end
 
 gem 'thin'
-gem 'newrelic_rpm'
 

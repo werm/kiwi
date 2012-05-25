@@ -2,19 +2,18 @@
 
 <div class="showcase kiwibox">
   <div class="ribbon"><%= @snippet.name %></div>
-  <div>
-    <%= @snippet.full_source %>
+  <div id="kiwi-rendered-source">
   </div>
 </div>
 
 <div class="html kiwibox">
   <div class="ribbon">html</div>
-  <%= text_area_tag nil, @snippet.html, class: "mono" %>
+  <%= text_area_tag nil, @snippet.html, class: "mono", id: "kiwi-html-source" %>
 </div>
 
 <div class="css kiwibox">
   <div class="ribbon">css</div>
-  <%= text_area_tag nil, @snippet.css, class: "mono" %>
+  <%= text_area_tag nil, @snippet.css, class: "mono", id: "kiwi-scss-source" %>
 </div>
 
 <div class="clear"></div>

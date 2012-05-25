@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
   skip_authorization_check only: [:index, :show]
   before_filter :authorize, except: [:index, :show]
+  before_filter :load_snippets
 
   # GET /snippets
   # GET /snippets.json
@@ -86,6 +87,12 @@ class SnippetsController < ApplicationController
 
   def authorize
     authorize! :manage, Snippet
+  end
+
+  def load_snippets
+    @categories = Snippet.select(:category).uniq.order("category")
+    @categories.map! { |s| s.category }
+    @snippet_count = Snippet.count
   end
 end
 

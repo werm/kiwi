@@ -49,7 +49,10 @@ class SnippetsController < ApplicationController
         format.html { redirect_to @snippet, flash: { success: 'Snippet was successfully created.' } }
         format.json { render json: @snippet, status: :created, location: @snippet }
       else
-        format.html { render action: "new" }
+        format.html do
+          flash.now[:alert] = 'There was a problem creating the snippet.'
+          render action: "new"
+        end
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +69,7 @@ class SnippetsController < ApplicationController
         format.json { render json: nil, status: :ok }
       else
         format.html do
-          flash.now[:error] = 'There was a problem updating the snippet.'
+          flash.now[:alert] = 'There was a problem updating the snippet.'
           render action: "edit"
         end
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
@@ -81,7 +84,7 @@ class SnippetsController < ApplicationController
     @snippet.destroy
 
     respond_to do |format|
-      format.html { redirect_to snippets_url, flash: { success: 'Snippet was successfully deleted.' } }
+      format.html { redirect_to snippets_url, flash: { success: 'Snippet was successfully destroyed.' } }
       format.json { render json: nil, status: :ok }
     end
   end

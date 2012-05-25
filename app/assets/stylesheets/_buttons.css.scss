@@ -33,7 +33,23 @@
   @include linear-gradient($color1 0%, $color2 100%, $fallback: $base);
 }
 
-.button {
+@mixin button-mixin($base) {
+  @include button-colors($base);
+
+  &:hover {
+    @include button-colors($base, $reverse: true);
+  }
+
+  &:active {
+    background: $base;
+    border: 1px solid darken($base, 19%);
+    border-top: 1px solid darken($base, 25%);
+    border-bottom: 1px solid darken($base, 12%);
+    box-shadow: inset 0 1px 2px darken($base, 19%);
+  }
+}
+
+.kiwibutton {
   display: inline-block;
   position: relative;
   margin: 0 0 10px;
@@ -64,51 +80,35 @@
     background: #e8e8e8;
     box-shadow: inset 0 1px 2px #b9b9b9;
   }
-}
 
-.button::-moz-focus-inner { border: 0; }
+  &::-moz-focus-inner { border: 0; }
 
-@mixin button-mixin($base) {
-  @include button-colors($base);
-
-  &:hover {
-    @include button-colors($base, $reverse: true);
+  &.steel {
+    @include button-mixin(#a5b8c6);
   }
-
-  &:active {
-    background: $base;
-    border: 1px solid darken($base, 19%);
-    border-top: 1px solid darken($base, 25%);
-    border-bottom: 1px solid darken($base, 12%);
-    box-shadow: inset 0 1px 2px darken($base, 19%);
+  &.yellow {
+    @include button-mixin(#fed166);
   }
-}
-
-.button.steel {
-  @include button-mixin(#a5b8c6);
-}
-.button.yellow {
-  @include button-mixin(#fed166);
-}
-.button.red {
-  @include button-mixin(#de585a);
-}
-.button.black {
-  @include button-mixin(#595959);
-}
-.button.purple {
-  @include button-mixin(#dfaeda);
-}
-.button.green {
-  @include button-mixin(#b6d76f);
-}
-.button.darkgray {
-  @include button-mixin(#c0c0c0);
-}
-.button.blue {
-  @include button-mixin(#8cd8f6);
-}
-.button.cyan {
-  @include button-mixin(#98e8ea);
+  &.red {
+    @include button-mixin(#de585a);
+  }
+  &.black {
+    @include button-mixin(#595959);
+  }
+  &.purple {
+    @include button-mixin(#dfaeda);
+  }
+  &.green {
+    @include button-mixin(#b6d76f);
+  }
+  &.darkgray {
+    @include button-mixin(#c0c0c0);
+  }
+  &.blue {
+    @include button-mixin(#8cd8f6);
+  }
+  &.cyan {
+    @include button-mixin(#98e8ea);
+  }
 }
 

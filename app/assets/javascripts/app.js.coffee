@@ -3,6 +3,10 @@ $ ->
   $("a[href=#]").click ->
     false
 
+  $("input.kiwifocus").each ->
+    if $(this).val() == ""
+      $(this).focus()
+
   window.currentSnippet = (
     _cachedCSS: "",
     _reqTimeout: null,
@@ -36,5 +40,6 @@ $ ->
     currentSnippet.refreshCSS()
 
   if $("#kiwi-html-source").length > 0
+    currentSnippet.renderSource()
     currentSnippet.refreshCSS()
 

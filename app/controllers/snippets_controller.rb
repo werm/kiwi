@@ -46,7 +46,7 @@ class SnippetsController < ApplicationController
 
     respond_to do |format|
       if @snippet.save
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully created.' }
+        format.html { redirect_to @snippet, flash: { success: 'Snippet was successfully created.' } }
         format.json { render json: @snippet, status: :created, location: @snippet }
       else
         format.html { render action: "new" }
@@ -62,10 +62,13 @@ class SnippetsController < ApplicationController
 
     respond_to do |format|
       if @snippet.update_attributes(params[:snippet])
-        format.html { redirect_to @snippet, notice: 'Snippet was successfully updated.' }
+        format.html { redirect_to @snippet, flash: { success: 'Snippet was successfully updated.' } }
         format.json { render json: nil, status: :ok }
       else
-        format.html { render action: "edit" }
+        format.html do
+          flash.now[:error] = 'There was a problem updating the snippet.'
+          render action: "edit"
+        end
         format.json { render json: @snippet.errors, status: :unprocessable_entity }
       end
     end
@@ -78,7 +81,7 @@ class SnippetsController < ApplicationController
     @snippet.destroy
 
     respond_to do |format|
-      format.html { redirect_to snippets_url }
+      format.html { redirect_to snippets_url, flash: { success: 'Snippet was successfully deleted.' } }
       format.json { render json: nil, status: :ok }
     end
   end

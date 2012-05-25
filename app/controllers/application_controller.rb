@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user
-    true
+    true unless Rails.env.production?
   end
 end

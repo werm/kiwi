@@ -1,8 +1,4 @@
 $ ->
-  # stop clicks on dummy links from putting a # at the end of the address bar
-  $("a[href=#]").click ->
-    false
-
   $("input.kiwifocus").each ->
     if $(this).val() == ""
       $(this).focus()

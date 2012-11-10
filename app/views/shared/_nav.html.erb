@@ -1,15 +1,17 @@
-<nav id="nav">
-  <% @categories.each do |cat| %>
-    <span><%= cat %></span>
-
-    <% Snippet.where(category: cat).each do |snip| %>
-      <%= link_to snip.name, snip %>
+<div class="well">
+  <ul class="nav nav-list">
+    <% @categories.each do |cat| %>
+      <li class="nav-header">
+        <%= cat %>
+      </li>
+      <li>
+        <% Snippet.where(category: cat).each do |snip| %>
+          <%= link_to snip.name, snip %>
+        <% end %>
+      </li>
     <% end %>
-
-    <% unless cat == @categories.last %><hr /><% end %>
-
-  <% end %>
-  <% if @snippet_count == 0 %>
-    <span>nothing to see here yet. how's about you go create some snippets?</span>
-  <% end %>
-</nav>
+    <% if @snippet_count == 0 %>
+      <li>nothing to see here yet. how's about you go create some snippets?</li>
+    <% end %>
+  </ul>
+</div>

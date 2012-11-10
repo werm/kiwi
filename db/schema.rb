@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523002512) do
+ActiveRecord::Schema.define(:version => 20121108163626) do
 
   create_table "snippets", :force => true do |t|
     t.string   "name",       :null => false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120523002512) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "category"
+    t.text     "javascript"
   end
 
 end

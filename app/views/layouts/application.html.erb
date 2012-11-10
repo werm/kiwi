@@ -4,26 +4,22 @@
   <title><% if content_for? :title %><%= yield :title %> &mdash; <% end %>kiwi</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= yield(:head) %>
   <%= csrf_meta_tags %>
-
-  <script type="text/javascript" src="http://use.typekit.com/une4wfx.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
-  <%= render partial: "shared/header" %>
-
-  <div class="container">
-    <div class="content">
-      <% flash.each do |k, v| %>
-        <div class="kiwiflash <%= k %>"><%= v %></div>
-      <% end %>
+    <%= render partial: "shared/header" %>
+  <div class="container-fluid">
+    <div class="grid">
+      <div class="col-1-4">
+        <%= render partial: "shared/nav" %>
+      </div>
+        <% flash.each do |k, v| %>
+          <div class="kiwiflash <%= k %>"><%= v %></div>
+        <% end %>
 
       <%= yield %>
     </div>
-
-    <%= render partial: "shared/nav" %>
-
-    <div class="clear"></div>
   </div>
 </body>
 </html>

@@ -1,25 +1,28 @@
 <% title @snippet.name %>
-
-<div class="showcase kiwibox">
-  <div class="ribbon"><%= "#{@snippet.category}: #{@snippet.name}" %></div>
-  <div id="kiwi-rendered-source">
-  </div>
-</div>
-
-<div class="html kiwibox">
-  <div class="ribbon">html</div>
-  <%= text_area_tag nil, @snippet.html, class: "mono", id: "kiwi-html-source" %>
-</div>
-
-<div class="css kiwibox">
-  <div class="ribbon">css</div>
-  <%= text_area_tag nil, @snippet.css, class: "mono", id: "kiwi-scss-source" %>
-</div>
-
-<div class="clear"></div>
-
-<% if can? :manage, Snippet %>
+<% javascript 'snippet' %>
+  <div class="span10">
+      <div class="row-fluid">
+        <div class="html kiwiboxCode span4">
+          <div class="ribbon">html</div>
+          <%= text_area_tag nil, @snippet.html, class: "mono", id: "kiwi-html-source" %>
+        </div>
+        <div class="css kiwiboxCode span4">
+          <div class="ribbon">css</div>
+          <%= text_area_tag nil, @snippet.css, class: "mono", id: "kiwi-scss-source" %>
+        </div>
+        <div class="js kiwiboxCode span4">
+          <div class="ribbon">js</div>
+          <%= text_area_tag nil, @snippet.javascript, class: "mono", id: "kiwi-js-source" %>
+        </div>
+      </div> <!-- row -->
+    </div> <!-- span10 -->
+    <div class="row-fluid">
+      <div class="showcase kiwibox span10 offset2">
+        <div class="ribbon"><%= "#{@snippet.category}: #{@snippet.name}" %></div>
+        <iframe id="preview" class="clearfix"></iframe>
+      </div>  
+    </div> <!-- row -->
+<footer>
   <%= link_to 'Edit', edit_snippet_path(@snippet) %> |
   <%= link_to 'Back', snippets_path %>
-<% end %>
-
+</footer>

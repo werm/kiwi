@@ -1,14 +1,20 @@
-<header id="header">
-  <div class="left">
-    <%= link_to "kiwi.", root_path, class: "logo" %><br />
-    <span class="description">a web snippet love affair.</span>
-  </div>
-
-  <% if can? :manage, Snippet %>
-    <div class="actions">
-      <%= link_to "new snippet", new_snippet_path, class: "green kiwibutton" %>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "snip.", root_path, class: "brand" %>
+      <div class="nav-collapse collapse">
+      </div>
+      <ul class="nav">
+        <li>
+          <%= link_to "new snippet", new_snippet_path %>
+        </li>
+      </ul>
+      </div><!--/.nav-collapse -->
     </div>
-  <% end %>
-
-  <div class="clear"></div>
-</header>
+  </div>
+  </div>

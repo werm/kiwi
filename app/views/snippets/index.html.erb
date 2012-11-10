@@ -1,16 +1,18 @@
-<div class="index-page">
-  <% if @snippet_count > 0 %>
-    <h2>select a snippet to see what kiwi is all about.<br />&larr;</h2>
-  <% else %>
-    <h2>yeah, what they said.<br />&larr;</h2>
-    <% if can? :manage, Snippet %>
-      <%= link_to "new snippet", new_snippet_path %>
-    <% else %>
-      <p>
-        hmm, looks like you're not allowed to create new snippets. better
-        luck next time!
-      </p>
+<div class="col-6-8">
+<% @categories.each do |cat| %>
+  <div class="grid">
+    <div class="col-1">
+      <h3><%= cat %></h3>
+    </div>
+  </div>
+  <div class="grid">
+    <% Snippet.where(category: cat).each do |snip| %>
+      <%= link_to snip.name, snip, :class => "col-1-4" %>
+      <iframe src="<%= snippets_path.to_s %>"></iframe>
     <% end %>
+  </div>
+  <% end %>
+  <% if @snippet_count == 0 %>
+    <p>nothing to see here yet. how's about you go create some snippets?</p>
   <% end %>
 </div>
-

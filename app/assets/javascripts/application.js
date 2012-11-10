@@ -12,4 +12,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.textchange
+//= require bootstrap.min
+//= require sass
+//= require iframeAutoHeight
+//= require codemirror
+//= require codemirror/modes/xml
+//= require codemirror/modes/javascript
+//= require codemirror/modes/css
+//= require codemirror/modes/htmlmixed
+//= require app
+//= require_self
+
+$(function() {
+ $(".kiwiboxCode").click(function(){
+  $(this).removeClass("span4").addClass("span6");
+ });
+
+ WebFontConfig = {
+    google: { families: [ 'Lato:400,700,400italic,700italic:latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+});

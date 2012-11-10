@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+# gem 'pg'
+gem 'sqlite3'
 
 gem 'cancan'
 
@@ -20,15 +21,10 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'capistrano'
 gem 'jquery-rails'
 gem 'bourbon'
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'capybara-webkit'
-end
-
-gem 'thin'
-
+# gem 'thin'
+gem 'puma'
+gem 'bootstrap-sass'
+gem 'codemirror-rails'

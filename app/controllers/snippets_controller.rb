@@ -6,6 +6,8 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.json
   def index
+    @snippet = Snippet.find_by_slug(params[:id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @snippets }
